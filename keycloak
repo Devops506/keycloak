@@ -1,1 +1,9 @@
 docker pull quay.io/keycloak/keycloak
+
+docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:18.0.2 start  --https-key-store-password=changeit --https-protocols=TLSv1.3,TLSv1.2 --https-port=9443 --hostname=keycloak.flodata.io --spi-theme-cache-themes=false --spi-theme-cache-templates=false --spi-theme-static-max-age=-1 --log-level=ERROR,INFO
+
+
+keytool -importkeystore -srckeystore abc.p12 \
+        -srcstoretype PKCS12 \
+        -destkeystore abc.jks \
+        -deststoretype JKS
